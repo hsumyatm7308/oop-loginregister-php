@@ -88,7 +88,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
         $_SESSION['email'] = $email;
         $_SESSION['password'] = $password;
         header("Location:logout.php");
-        exit();
+        exit(); // Make sure to exit after the header() function to prevent further execution of the script
     } elseif ($returnresult == 100) {
         echo "<div class='alert alert-danger'>Password doesn't match!</div>";
     }

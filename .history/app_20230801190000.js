@@ -4,10 +4,9 @@ const getform = document.getElementById('form');
 const prevbtn = document.getElementById('prev');
 const nextbtn = document.getElementById('next');
 const footer = document.getElementById('footer');
-const getrstcontainer = document.getElementById('result-container');
 
 var datas = [];
-var objkeys = ["fullname", "username", "email", "address","phone", "password", "comfirm"];
+var objkeys = ["fullname", "username", "email", "address", "password", "comfirm"];
 
 
 var curidx = 0;
@@ -24,18 +23,18 @@ function showpage(num) {
     num === 0 ? (prevbtn.style.display = "none") : (prevbtn.style.display = "block");
     num === 0 ? (footer.classList.remove('hidden')) : (footer.classList.add('hidden'));
 
-    num === getpages.length - 1 ? (nextbtn.textContent = 'Submit') : (nextbtn.textContent = 'Next');
+    num === getpages.length -1 ? (nextbtn.textContent = 'Submit') : (nextbtn.textContent = 'Next');
 }
 
 
-function backnow(num) {
+function backnow(num){
 
     curidx--;
     console.log(curidx)
     // getpages[curidx ].classList.add('hidden');
-    getpages[curidx + 1].classList.add('hidden');
+    getpages[curidx+1].classList.add('hidden');
 
-
+    
     showpage(curidx)
 }
 
@@ -51,10 +50,8 @@ function gonow(num) {
     if (curidx >= getpages.length) {
         nextbtn.style.direction = "none";
         // getform.submit();
-        getrstcontainer.style.display = 'block';
-        result(datas);
+    getrstcontainer.style.display = 'block';
 
-        return false;
 
     }
 
@@ -63,18 +60,17 @@ function gonow(num) {
 
 }
 
-
-function* genfun() {
+function* yeildfun() {
     var index = 0;
 
     while (index < objkeys.length) {
-        yield index++;
+        yield function () {
+            index++;
+        }
     }
 }
 
-let gen = genfun();
-
-// console.log(gen.next().value);
+let gen = yeildfun();
 
 function formvalid() {
     var valid = true;
@@ -103,22 +99,20 @@ function formvalid() {
 
 
 function result(data) {
-    console.log(data);
-
+    // console.log(data);
+  
     getrstcontainer.innerHTML = `
-    <ul>
-    <li> ${data[0].fullname} </li>
-    <li>Email : ${data[1].username}</li>
-    <li>Date of birth : ${data[2].email}</li>
-    <li>Phone : ${data[3].address}</li>
-    <li>Address : ${data[4].phone}</li>
-    <li>Address : ${data[5].password}</li>
-    <li>Address : ${data[6].comfirm}</li>
-  </ul>
+      <ul>
+        <li>Name : ${data[2].firstname} ${data[3].lastname}</li>
+        <li>Email : ${data[0].email}</li>
+        <li>Date of birth : ${data[4].dob}</li>
+        <li>Phone : ${data[5].phone}</li>
+        <li>Address : ${data[6].address}</li>
+      </ul>
       <button type="submit" class="submit-btn" onclick="submitbtn()">Apply Now</button>
     `;
-}
-
-function submitbtn() {
+  }
+  
+  function submitbtn() {
     getform.submit();
-}
+  }

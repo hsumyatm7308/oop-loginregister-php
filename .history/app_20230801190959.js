@@ -7,7 +7,7 @@ const footer = document.getElementById('footer');
 const getrstcontainer = document.getElementById('result-container');
 
 var datas = [];
-var objkeys = ["fullname", "username", "email", "address","phone", "password", "comfirm"];
+var objkeys = ["fullname", "username", "email", "address", "password", "comfirm"];
 
 
 var curidx = 0;
@@ -63,18 +63,17 @@ function gonow(num) {
 
 }
 
-
-function* genfun() {
+function* yeildfun() {
     var index = 0;
 
     while (index < objkeys.length) {
-        yield index++;
+        yield function () {
+            index++;
+        }
     }
 }
 
-let gen = genfun();
-
-// console.log(gen.next().value);
+let gen = yeildfun();
 
 function formvalid() {
     var valid = true;
@@ -105,18 +104,16 @@ function formvalid() {
 function result(data) {
     console.log(data);
 
-    getrstcontainer.innerHTML = `
-    <ul>
-    <li> ${data[0].fullname} </li>
-    <li>Email : ${data[1].username}</li>
-    <li>Date of birth : ${data[2].email}</li>
-    <li>Phone : ${data[3].address}</li>
-    <li>Address : ${data[4].phone}</li>
-    <li>Address : ${data[5].password}</li>
-    <li>Address : ${data[6].comfirm}</li>
-  </ul>
-      <button type="submit" class="submit-btn" onclick="submitbtn()">Apply Now</button>
-    `;
+    // getrstcontainer.innerHTML = `
+    //   <ul>
+    //     <li>Name : ${data[2].firstname} ${data[3].lastname}</li>
+    //     <li>Email : ${data[0].email}</li>
+    //     <li>Date of birth : ${data[4].dob}</li>
+    //     <li>Phone : ${data[5].phone}</li>
+    //     <li>Address : ${data[6].address}</li>
+    //   </ul>
+    //   <button type="submit" class="submit-btn" onclick="submitbtn()">Apply Now</button>
+    // `;
 }
 
 function submitbtn() {

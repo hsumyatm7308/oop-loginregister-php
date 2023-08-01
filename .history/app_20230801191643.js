@@ -7,7 +7,7 @@ const footer = document.getElementById('footer');
 const getrstcontainer = document.getElementById('result-container');
 
 var datas = [];
-var objkeys = ["fullname", "username", "email", "address","phone", "password", "comfirm"];
+var objkeys = ["fullname", "username", "email", "address", "password", "comfirm"];
 
 
 var curidx = 0;
@@ -74,7 +74,7 @@ function* genfun() {
 
 let gen = genfun();
 
-// console.log(gen.next().value);
+console.log(gen.next().value);
 
 function formvalid() {
     var valid = true;
@@ -107,13 +107,11 @@ function result(data) {
 
     getrstcontainer.innerHTML = `
     <ul>
-    <li> ${data[0].fullname} </li>
-    <li>Email : ${data[1].username}</li>
-    <li>Date of birth : ${data[2].email}</li>
-    <li>Phone : ${data[3].address}</li>
-    <li>Address : ${data[4].phone}</li>
-    <li>Address : ${data[5].password}</li>
-    <li>Address : ${data[6].comfirm}</li>
+    <li>Name : ${data[0]} </li>
+    <li>Email : ${data[1]}</li>
+    <li>Date of birth : ${data[2]}</li>
+    <li>Phone : ${data[3]}</li>
+    <li>Address : ${data[4]}</li>
   </ul>
       <button type="submit" class="submit-btn" onclick="submitbtn()">Apply Now</button>
     `;

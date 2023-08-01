@@ -113,7 +113,6 @@ function result(data) {
     <li>Phone : ${data[3].address}</li>
     <li>Address : ${data[4].phone}</li>
     <li>Address : ${data[5].password}</li>
-    <li>Address : ${data[6].comfirm}</li>
   </ul>
       <button type="submit" class="submit-btn" onclick="submitbtn()">Apply Now</button>
     `;

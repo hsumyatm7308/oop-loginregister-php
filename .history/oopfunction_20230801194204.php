@@ -27,7 +27,6 @@ class Connection
         }
     }
 }
-
 class Register extends Connection
 {
     // Function to register user in the database 
@@ -52,11 +51,11 @@ class Register extends Connection
                     $stmt->bindParam(':address', $address);
                     $stmt->bindParam(':phone', $phone);
                     $stmt->bindParam(':password', $password);
-                    if($stmt->execute()){
-                        return 1;
-                    }else{
-                        echo "Try Again";
-                    }
+                    $stmt->execute();
+
+                    header("Location:logout.php");
+                    exit;
+                    return 1;
 
                 } catch (Exception $e) {
                     echo "Error Found: " . $e->getMessage();
@@ -85,10 +84,8 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
     if ($returnresult == 10) {
         echo "<div class='alert alert-danger'>Username or email already taken!</div>";
     } elseif ($returnresult == 1) {
-        $_SESSION['email'] = $email;
-        $_SESSION['password'] = $password;
-        header("Location:logout.php");
-        exit();
+        echo "<div class='alert alert-success'>Registration successful!</div>";
+
     } elseif ($returnresult == 100) {
         echo "<div class='alert alert-danger'>Password doesn't match!</div>";
     }

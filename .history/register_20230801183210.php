@@ -1,3 +1,37 @@
+<?php
+
+require_once "oopfunction.php";
+
+if (isset($_POST['submit'])) {
+    $fullname = textfilter($_POST['fullname']);
+    $username = textfilter($_POST["username"]);
+    $email = textfilter($_POST["email"]);
+    $address = textfilter($_POST["address"]);
+    $phone = textfilter($_POST["phone"]);
+    $password = textfilter($_POST["password"]);
+    $comfirmpass = textfilter($_POST["comfirm"]);
+
+    $returnresult = $reg->insertUserInfo($fullname, $username, $email, $address, $phone, $password);
+
+    if()
+
+
+}
+
+
+function textfilter($data)
+{
+    $data = trim($data);
+    $data = htmlspecialchars($data);
+    $data = stripcslashes($data);
+
+    return $data;
+}
+
+
+?>
+
+
 <!DOCTYPE html>
 <html>
 
@@ -9,6 +43,15 @@
         /* form .page {
             display: none;
         } */
+
+        body {
+            font-family: sans-serif;
+            height: 100vh;
+            background: #888;
+
+            display: grid;
+            place-items: center;
+        }
 
         input.invalid {
             border: 1px dotted red;
@@ -50,7 +93,7 @@
                     placeholder="Comfirm password">
             </div>
 
-          
+
 
             <div class="w-full flex justify-center items-center">
                 <button type="button" id="next"
@@ -59,9 +102,28 @@
             </div>
 
         </form>
+
+
+        <div id="footer" class="w-full flex justify-center items-center flex-col mt-32 hidden">
+            <div>
+                Have already account? <a href="">Login</a>
+            </div>
+            <div>forget password</div>
+        </div>
     </div>
 
     <script src="./app.js"></script>
 </body>
 
 </html>
+
+<!-- CREATE TABLE IF NOT EXISTS loginregister(
+    id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
+    fullname VARCHAR(255),
+    username VARCHAR(255),
+    email VARCHAR(255),
+    address VARCHAR(255),
+    phone VARCHAR(255),
+    password  INT 
+    ) 
+-->

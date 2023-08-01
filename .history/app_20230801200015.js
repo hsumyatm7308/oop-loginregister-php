@@ -115,7 +115,7 @@ function result(data) {
     <li>Address : ${data[5].password}</li>
     <li>Address : ${data[6].comfirm}</li>
   </ul>
-      <button type="submit" class="submit-btn" onclick="submitbtn()">Apply Now</button>
+      <a type="submit" class="submit-btn" onclick="submitbtn()">Apply Now</a>
     `;
 }
 
