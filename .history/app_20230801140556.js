@@ -1,0 +1,1 @@
+const getpages = document.getElementsByClassName('page');

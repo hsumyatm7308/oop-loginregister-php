@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Login</title>
+        <script src="https://cdn.tailwindcss.com"></script>
+    </head>
+    <body class="w-screen h-screen  flex justify-center items-center">
+        <div class="w-[450px] h-[600px] bg-stone-100 border ">
+             <form action="">
+                <h1>Register With Us</h1>
+
+			<div class="page">
+				<label for="email">Security</label>
+				<input type="email" name="email" id="email" class="form-control" placeholder="Enter Email" />
+				<input type="password" name="password" id="password" class="form-control"
+					placeholder="Enter Passcode" />
+
+				<div>
+					<input type="radio" name="newsletter" id="agree" class="form-check-input" value="1" checked /><label
+						for="agree">I agree to get newsletter.</label>
+					<br>
+					<input type="radio" name="newsletter" id="noagree" class="form-check-input" value="0"
+						checked /><label for="noagree">I do not agree to get newsletter.</label>
+				</div>
+			</div>
+
+			<div class="page">
+				<label for="firstname">Personal Info :</label>
+				<input type="text" name="firstname" id="firstname" class="form-control"
+					placeholder="Enter First  Name" />
+				<input type="text" name="lastname" id="lastname" class="form-control" placeholder="Enter Last Name" />
+
+				<div>
+					<label for="profile">Profile Picture</label>
+					<input type="file" name="profile[]" id="profile" class="form-control" />
+				</div>
+			</div>
+
+			<div class="page">
+				<label for="dob">Date Of Birth :</label>
+				<input type="date" name="dob" id="dob" class="form-control" />
+			</div>
+
+			<div class="page">
+				<label for="phone">Contact Info :</label>
+				<input type="text" name="phone" id="phone" class="form-control" placeholder="Enter Phone Number" />
+				<input type="text" name="address" id="address" class="form-control"
+					placeholder="Enter Detail Address" />
+
+				<div>
+					<input type="checkbox" name="documents[]" id="docnrc" class="form-check-input" value="nrc" checked /><label
+						for="docnrc">I have NRC.</label>
+					<br>
+					<input type="checkbox" name="documents[]" id="docpassport" class="form-check-input" value="passport"
+						 /><label for="docpassport">I have passport.</label>
+				</div>
+			</div>
+
+
+			<div class="d-flex">
+				<button type="button" id="prevbtn" class="btn" onclick="gonow(-1)">Previous</button>
+				<button type="button" id="nextbtn" class="btn" onclick="gonow(1)">Next</button>
+			</div>
+
+            <p>Already have an account ? <a href="./signin.php">Signin Here !!!</a></p>
+
+             </form>
+            
+        </div>
+    </body>
+</html>

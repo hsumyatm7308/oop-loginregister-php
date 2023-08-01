@@ -1,0 +1,150 @@
+* {
+    box-sizing: border-box;
+  }
+  
+  body {
+    font-family: sans-serif;
+    height: 100vh;
+    background: #888;
+  
+    display: grid;
+    place-items: center;
+  }
+  
+  .container {
+    width: 600px;
+    background: #fff;
+    box-shadow: 0 10px 5px rgba(0, 0, 0, 0.5);
+    /* padding: 20px; */
+  
+    display: flex;
+  }
+  
+  .dotbox {
+    width: 10%;
+  }
+  
+  .dot {
+    display: block;
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+    background-color: #bbb;
+    text-align: center;
+    line-height: 15px;
+    font-size: 12px;
+    margin: 10px auto;
+    opacity: 0.5;
+  }
+  
+  .dot.active {
+    opacity: 1;
+  }
+  
+  .dot.done {
+    background-color: green;
+  }
+  
+  #form {
+    width: 90%;
+    border-left: 2px solid #eee;
+    padding: 50px;
+  }
+  
+  h1 {
+    text-align: center;
+  }
+  
+  .page {
+    display: none;
+  }
+  
+  input {
+    width: 100%;
+    font-size: 20px;
+    padding: 10px;
+    border: 1px solid #ccc;
+    outline: none;
+    margin: 10px 0;
+  }
+
+  input:focus{
+    outline: none;
+  }
+
+  .form-check-input{
+    width: auto;
+    display: inline;
+  }
+  
+  input.invalid {
+    border: 1px dotted red;
+  }
+  
+  .d-flex {
+    display: flex;
+    justify-content: end;
+  }
+  
+  .btn {
+    color: #fff;
+    background: steelblue;
+    border: none;
+    font-size: 18px;
+    padding: 10px 20px;
+    cursor: pointer;
+  
+    margin-left: 20px;
+  }
+  
+  .btn:hover {
+    opacity: 0.8;
+  }
+  
+  #prevbtn {
+    background: #bbb;
+  }
+  
+  #result-container {
+    display: none;
+  
+    width: 90%;
+  }
+  
+  #result-container ul li {
+    list-style: none;
+    padding: 3px;
+  }
+  
+  .submit-btn {
+    width: 100%;
+    background-color: steelblue;
+    color: #fff;
+    font-size: 20px;
+    border: none;
+  
+    padding: 5px 0;
+    cursor: pointer;
+  }
+
+  #userlist-container{
+    width: 90%;
+  }
+
+  #userlist-container table{
+    width: 100%;
+    border-collapse: collapse;
+    margin: 20px 0;
+
+  }
+
+  #userlist-container table thead th{
+    border-bottom: 1px solid gray;
+    padding: 10px;
+  }
+
+
+  #userlist-container table td{
+    border-bottom: 1px solid gray;
+    padding: 10px;
+  }
