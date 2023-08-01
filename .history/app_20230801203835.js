@@ -29,7 +29,7 @@ function showpage(num) {
     if (num === getpages.length - 1) {
         // nextbtn.style.display = "none";
         nextbtn.innerHTML = `<button type="submit"
-        class="w-full bg-stone-200 text-gray-500 hover:opacity-80 hover:text-gray-800"
+        class="w-full bg-stone-200 text-gray-500   hover:opacity-80 hover:text-gray-800"
         onclick="submitbtn()">Submit </button>`;
     } else {
         nextbtn.textContent = 'Next'

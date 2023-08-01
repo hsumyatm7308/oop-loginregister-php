@@ -7,7 +7,7 @@ const footer = document.getElementById('footer');
 const getrstcontainer = document.getElementById('result-container');
 
 var datas = [];
-var objkeys = ["fullname", "username", "email", "address", "phone", "password", "comfirm"];
+var objkeys = ["fullname", "username", "email", "address","phone", "password", "comfirm"];
 
 
 var curidx = 0;
@@ -26,12 +26,9 @@ function showpage(num) {
 
     // num === getpages.length - 1 ? (nextbtn.textContent = 'Submit') : ();
 
-    if (num === getpages.length - 1) {
-        // nextbtn.style.display = "none";
-        nextbtn.innerHTML = `<button type="submit"
-        class="w-full bg-stone-200 text-gray-500 hover:opacity-80 hover:text-gray-800"
-        onclick="submitbtn()">Submit </button>`;
-    } else {
+    if(num===getpages.length-1){
+        nextbtn.innerHTML = ``;
+    }else{
         nextbtn.textContent = 'Next'
     }
 }
@@ -111,22 +108,22 @@ function formvalid() {
 
 
 
-// function result(data) {
-//     console.log(data);
+function result(data) {
+    console.log(data);
 
-//     getrstcontainer.innerHTML = `
-//     <ul>
-//     <li> ${data[0].fullname} </li>
-//     <li>Email : ${data[1].username}</li>
-//     <li>Date of birth : ${data[2].email}</li>
-//     <li>Phone : ${data[3].address}</li>
-//     <li>Address : ${data[4].phone}</li>
-//     <li>Address : ${data[5].password}</li>
-//     <li>Address : ${data[6].comfirm}</li>
-//   </ul>
-//       <button type="submit" class="submit-btn" onclick="submitbtn()">Apply Now</button>
-//     `;
-// }
+    getrstcontainer.innerHTML = `
+    <ul>
+    <li> ${data[0].fullname} </li>
+    <li>Email : ${data[1].username}</li>
+    <li>Date of birth : ${data[2].email}</li>
+    <li>Phone : ${data[3].address}</li>
+    <li>Address : ${data[4].phone}</li>
+    <li>Address : ${data[5].password}</li>
+    <li>Address : ${data[6].comfirm}</li>
+  </ul>
+      <button type="submit" class="submit-btn" onclick="submitbtn()">Apply Now</button>
+    `;
+}
 
 function submitbtn() {
     getform.submit();
