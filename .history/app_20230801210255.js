@@ -85,6 +85,7 @@ let gen = genfun();
 function formvalid() {
     var valid = true;
     var getcurrinput = getpages[curidx].getElementsByTagName('input');
+    // console.log(getcurrinput);
     // console.log(getcurrinput[0].value);
 
     for (var x = 0; x < getcurrinput.length; x++) {

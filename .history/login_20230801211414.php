@@ -104,9 +104,8 @@ require_once 'oopfunction.php';
 
         <div id="footer" class="w-full flex justify-center items-center flex-col mt-32 hidden">
             <div>
-                Have already account? <a href="">Login</a>
+                Don't you have account? <a href="">Register</a>
             </div>
-            <div>forget password</div>
         </div>
     </div>
 
@@ -114,14 +113,3 @@ require_once 'oopfunction.php';
 </body>
 
 </html>
-
-<!-- CREATE TABLE IF NOT EXISTS loginregister(
-    id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
-    fullname VARCHAR(255),
-    username VARCHAR(255),
-    email VARCHAR(255),
-    address VARCHAR(255),
-    phone VARCHAR(255),
-    password  VARCHAR(255)
-    ) 
--->

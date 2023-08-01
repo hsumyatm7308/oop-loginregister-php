@@ -67,29 +67,32 @@ class Register extends Connection
         }
     }
 }
+
 class Login extends Connection
 {
     public $id;
-
     public function loginUser($username, $password)
     {
         try {
-            $stmt = $this->conn->prepare('SELECT id, password FROM loginregister WHERE username = :username');
-            $stmt->bindParam(':username', $username, PDO::PARAM_STR);
-            $stmt->execute();
+            $check = $this->conn->prepare('SELECT * FROM loginregister WHERE username = :username OR password = :password');
+            $check->bindParam(':username', $username, PDO::PARAM_STR);
+            $check->bindParam(':password', $password, PDO::PARAM_STR);
+            $check->execute();
 
-            $user = $stmt->fetch(PDO::FETCH_ASSOC);
+            $row = $check->fetch(PDO::FETCH_ASSOC);
 
-            if ($user) {
-                if (password_verify($password, $user['password'])) {
-                    $this->id = $user['id'];
-                    return 1; // Login successful
+            if ($row > 0) {
+                if ($username === $row['username'] && $password === $row['password']) {
+                    $this->id = $row['id'];
+                    return 1;
                 } else {
-                    return 10; // Incorrect password
+                    return 10;
                 }
+
             } else {
-                return 100; // User not found
+                return 100;
             }
+
         } catch (Exception $e) {
             die("Error: " . $e->getMessage());
         }
@@ -125,6 +128,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
 
 
 
+
 if ($_SERVER['REQUEST_METHOD'] === "POST") {
     $log = new Login();
 
@@ -136,10 +140,10 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
     if ($returnresult == 10) {
         echo "<div class='alert alert-danger'>Username and Password don't match</div>";
     } elseif ($returnresult == 1) {
-        header("Location: logout.php");
+        header("Location:logout.php");
         exit();
     } elseif ($returnresult == 100) {
-        header("Location: register.php");
+        header("Location:register.php");
         exit();
     }
 }

@@ -52,9 +52,9 @@ class Register extends Connection
                     $stmt->bindParam(':address', $address);
                     $stmt->bindParam(':phone', $phone);
                     $stmt->bindParam(':password', $password);
-                    if ($stmt->execute()) {
+                    if($stmt->execute()){
                         return 1;
-                    } else {
+                    }else{
                         echo "Try Again";
                     }
 
@@ -67,40 +67,20 @@ class Register extends Connection
         }
     }
 }
-class Login extends Connection
-{
-    public $id;
 
-    public function loginUser($username, $password)
-    {
-        try {
-            $stmt = $this->conn->prepare('SELECT id, password FROM loginregister WHERE username = :username');
-            $stmt->bindParam(':username', $username, PDO::PARAM_STR);
-            $stmt->execute();
+class Login extends Connection{
+    public function loginUser($username,$email,$password){
+        try{
+            
 
-            $user = $stmt->fetch(PDO::FETCH_ASSOC);
-
-            if ($user) {
-                if (password_verify($password, $user['password'])) {
-                    $this->id = $user['id'];
-                    return 1; // Login successful
-                } else {
-                    return 10; // Incorrect password
-                }
-            } else {
-                return 100; // User not found
-            }
-        } catch (Exception $e) {
-            die("Error: " . $e->getMessage());
         }
     }
 }
 
 $obj = new Connection();
+$reg = new Register();
 
 if ($_SERVER['REQUEST_METHOD'] === "POST") {
-    $reg = new Register();
-
     $fullname = textfilter($_POST['fullname']);
     $username = textfilter($_POST["username"]);
     $email = textfilter($_POST["email"]);
@@ -120,27 +100,6 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
         exit();
     } elseif ($returnresult == 100) {
         echo "<div class='alert alert-danger'>Password doesn't match!</div>";
-    }
-}
-
-
-
-if ($_SERVER['REQUEST_METHOD'] === "POST") {
-    $log = new Login();
-
-    $username = textfilter($_POST["username"]);
-    $password = textfilter($_POST["password"]);
-
-    $returnresult = $log->loginUser($username, $password);
-
-    if ($returnresult == 10) {
-        echo "<div class='alert alert-danger'>Username and Password don't match</div>";
-    } elseif ($returnresult == 1) {
-        header("Location: logout.php");
-        exit();
-    } elseif ($returnresult == 100) {
-        header("Location: register.php");
-        exit();
     }
 }
 

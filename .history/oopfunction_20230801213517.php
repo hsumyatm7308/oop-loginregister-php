@@ -52,9 +52,9 @@ class Register extends Connection
                     $stmt->bindParam(':address', $address);
                     $stmt->bindParam(':phone', $phone);
                     $stmt->bindParam(':password', $password);
-                    if ($stmt->execute()) {
+                    if($stmt->execute()){
                         return 1;
-                    } else {
+                    }else{
                         echo "Try Again";
                     }
 
@@ -67,40 +67,39 @@ class Register extends Connection
         }
     }
 }
-class Login extends Connection
-{
-    public $id;
 
-    public function loginUser($username, $password)
-    {
-        try {
-            $stmt = $this->conn->prepare('SELECT id, password FROM loginregister WHERE username = :username');
-            $stmt->bindParam(':username', $username, PDO::PARAM_STR);
-            $stmt->execute();
-
-            $user = $stmt->fetch(PDO::FETCH_ASSOC);
-
-            if ($user) {
-                if (password_verify($password, $user['password'])) {
-                    $this->id = $user['id'];
-                    return 1; // Login successful
-                } else {
-                    return 10; // Incorrect password
+class Login extends Connection{
+    public function loginUser($username,$password){
+        try{
+            $check = $this->conn->prepare('SELECT * FROM loginregister WHERE username = :username OR password = :password');
+            $check->bindParam(':username', $username, PDO::PARAM_STR);
+            $check->bindParam(':password', $password, PDO::PARAM_STR);
+            $check->execute();
+    
+            $row = $check->rowCount();
+    
+            if ($row > 0) {
+                if($username === $row['username'] && $password === $row['password']){
+                    return 1;
+                }else{
+                    return 10;
                 }
+
             } else {
-                return 100; // User not found
+                return 100;
             }
-        } catch (Exception $e) {
-            die("Error: " . $e->getMessage());
+
+        }catch(Exception $e){
+            die("Error: ". $e->getMessage());
         }
     }
 }
 
 $obj = new Connection();
+$reg = new Register();
+$log = new Login();
 
 if ($_SERVER['REQUEST_METHOD'] === "POST") {
-    $reg = new Register();
-
     $fullname = textfilter($_POST['fullname']);
     $username = textfilter($_POST["username"]);
     $email = textfilter($_POST["email"]);
@@ -125,21 +124,22 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
 
 
 
-if ($_SERVER['REQUEST_METHOD'] === "POST") {
-    $log = new Login();
 
+if ($_SERVER['REQUEST_METHOD'] === "POST") {
     $username = textfilter($_POST["username"]);
     $password = textfilter($_POST["password"]);
 
     $returnresult = $log->loginUser($username, $password);
 
     if ($returnresult == 10) {
-        echo "<div class='alert alert-danger'>Username and Password don't match</div>";
+        echo "<div class='alert alert-danger'>Username and Password doesn't match</div>";
     } elseif ($returnresult == 1) {
-        header("Location: logout.php");
+        $_SESSION['email'] = $email;
+        $_SESSION['password'] = $password;
+        header("Location:logout.php");
         exit();
     } elseif ($returnresult == 100) {
-        header("Location: register.php");
+        header("Location:register.php");
         exit();
     }
 }

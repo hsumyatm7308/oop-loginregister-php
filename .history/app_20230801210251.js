@@ -38,7 +38,8 @@ function showpage(num) {
 function backnow(num) {
 
     curidx--;
-    // console.log(curidx)
+    console.log(curidx)
+    // getpages[curidx ].classList.add('hidden');
     getpages[curidx + 1].classList.add('hidden');
 
 
@@ -85,6 +86,7 @@ let gen = genfun();
 function formvalid() {
     var valid = true;
     var getcurrinput = getpages[curidx].getElementsByTagName('input');
+    // console.log(getcurrinput);
     // console.log(getcurrinput[0].value);
 
     for (var x = 0; x < getcurrinput.length; x++) {

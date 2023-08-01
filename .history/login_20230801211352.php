@@ -114,14 +114,3 @@ require_once 'oopfunction.php';
 </body>
 
 </html>
-
-<!-- CREATE TABLE IF NOT EXISTS loginregister(
-    id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
-    fullname VARCHAR(255),
-    username VARCHAR(255),
-    email VARCHAR(255),
-    address VARCHAR(255),
-    phone VARCHAR(255),
-    password  VARCHAR(255)
-    ) 
--->

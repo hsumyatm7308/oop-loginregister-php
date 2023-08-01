@@ -125,6 +125,7 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
 
 
 
+
 if ($_SERVER['REQUEST_METHOD'] === "POST") {
     $log = new Login();
 
@@ -136,10 +137,10 @@ if ($_SERVER['REQUEST_METHOD'] === "POST") {
     if ($returnresult == 10) {
         echo "<div class='alert alert-danger'>Username and Password don't match</div>";
     } elseif ($returnresult == 1) {
-        header("Location: logout.php");
+        header("Location:logout.php");
         exit();
     } elseif ($returnresult == 100) {
-        header("Location: register.php");
+        header("Location:register.php");
         exit();
     }
 }

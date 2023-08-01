@@ -6,6 +6,9 @@
 
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
+        /* form .page {
+            display: none;
+        } */
 
         body {
             font-family: sans-serif;

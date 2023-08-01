@@ -63,32 +63,20 @@ require_once 'oopfunction.php';
         <span id="prev" class="text-gray-500 self-start ml-8 mt-5" onclick="backnow(1)">Back</span>
 
 
-        <h1 class="text-xl text-black uppercase mt-16">Register</h1>
+        <h1 class="text-xl text-black uppercase mt-16">Log in</h1>
 
         <form action="" method="post" id="form" class="w-full flex justify-center items-center flex-col mt-20">
-            <div class="page w-full flex justify-center items-center mt-5 hidden">
-                <input type="text" name="fullname" class="w-[90%] p-4 mb-2 focus:outline-none" placeholder="Full name">
-            </div>
+     
             <div class="page w-full flex justify-center items-center hidden">
                 <input type="text" name="username" class="w-[90%] p-4 mb-2 focus:outline-none" placeholder="username">
             </div>
-            <div class="page w-full flex justify-center items-center hidden">
-                <input type="email" name="email" class="w-[90%] p-4 mb-2 focus:outline-none" placeholder="Email">
-            </div>
-            <div class="page w-full flex justify-center items-center hidden">
-                <input type="text" name="address" class="w-[90%] p-4 mb-2 focus:outline-none" placeholder="Address">
-            </div>
-            <div class="page w-full flex justify-center items-center hidden">
-                <input type="text" name="phone" class="w-[90%] p-4 mb-2 focus:outline-none" placeholder="Phone">
-            </div>
+          
+           
             <div class="page w-full flex justify-center items-center hidden">
                 <input type="password" name="password" class="w-[90%] p-4 mb-2 focus:outline-none"
                     placeholder="Password">
             </div>
-            <div class="page w-full flex justify-center items-center hidden">
-                <input type="password" name="comfirm" class="w-[90%] p-4 mb-2 focus:outline-none"
-                    placeholder="Comfirm password">
-            </div>
+          
 
 
 
@@ -104,9 +92,8 @@ require_once 'oopfunction.php';
 
         <div id="footer" class="w-full flex justify-center items-center flex-col mt-32 hidden">
             <div>
-                Have already account? <a href="">Login</a>
+                Don't you have account? <a href="">Register</a>
             </div>
-            <div>forget password</div>
         </div>
     </div>
 
@@ -114,14 +101,3 @@ require_once 'oopfunction.php';
 </body>
 
 </html>
-
-<!-- CREATE TABLE IF NOT EXISTS loginregister(
-    id INT AUTO_INCREMENT NOT NULL PRIMARY KEY,
-    fullname VARCHAR(255),
-    username VARCHAR(255),
-    email VARCHAR(255),
-    address VARCHAR(255),
-    phone VARCHAR(255),
-    password  VARCHAR(255)
-    ) 
--->

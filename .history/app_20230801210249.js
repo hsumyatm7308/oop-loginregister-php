@@ -26,6 +26,7 @@ function showpage(num) {
 
 
     if (num === getpages.length - 1) {
+        // nextbtn.style.display = "none";
         nextbtn.innerHTML = `<button type="submit"
         class="w-full bg-stone-200 text-gray-500 hover:opacity-80 hover:text-gray-800"
         onclick="submitbtn()">Submit </button>`;
@@ -38,7 +39,8 @@ function showpage(num) {
 function backnow(num) {
 
     curidx--;
-    // console.log(curidx)
+    console.log(curidx)
+    // getpages[curidx ].classList.add('hidden');
     getpages[curidx + 1].classList.add('hidden');
 
 
@@ -85,6 +87,7 @@ let gen = genfun();
 function formvalid() {
     var valid = true;
     var getcurrinput = getpages[curidx].getElementsByTagName('input');
+    // console.log(getcurrinput);
     // console.log(getcurrinput[0].value);
 
     for (var x = 0; x < getcurrinput.length; x++) {
